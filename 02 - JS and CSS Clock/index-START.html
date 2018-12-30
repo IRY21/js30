@@ -78,6 +78,10 @@
       return ((hand / ticks) * 360) + 90;
     }
 
+    function addTranform(hand, degree) {
+      hand.style.transform = `rotate(${degree}deg)`;
+    }
+
     function removeTransition(hand, degree) {
       if (degree === 90) {
         hand.style.transition = 'none';
@@ -97,9 +101,9 @@
       const minsDegrees = timeTicker(mins, 60);
       const hourDegrees = timeTicker(hours, 12);
 
-      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-      minHand.style.transform = `rotate(${minsDegrees}deg)`;
-      hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+      addTranform(secondHand, secondsDegrees);
+      addTranform(minHand, minsDegrees);
+      addTranform(hourHand, hourDegrees);
 
       removeTransition(secondHand, secondsDegrees);
       removeTransition(minHand, minsDegrees);
